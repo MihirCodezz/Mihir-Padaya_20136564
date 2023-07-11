@@ -1,0 +1,57 @@
+package com;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Registration extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String sid = request.getParameter("sid");
+		String sname = request.getParameter("sname");
+		String phone = request.getParameter("phone");
+		String marks = request.getParameter("marks");
+		String branch = request.getParameter("branch");
+		doGet(request, response);
+		
+//		String url = "jdbc:mysql://localhost:3306/igt";
+//		String username = "root";
+//		String password = "1234";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/igt","root","1234");
+			String sql = "INSERT INTO students (sid, sname, phone, marks, branch) VALUES (?, ?, ?, ?, ?)";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sid);
+			pstmt.setString(2, sname);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, marks);
+			pstmt.setString(5, branch);
+			
+			int rowsInserted = pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+			
+			if (rowsInserted > 0) {
+				request.setAttribute("message", "Congrats, YOU ARE SUCCESSFULLY REGISTERED!");
+				request.getRequestDispatcher("success.jsp").forward(request, response);
+			}	
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+		}
+	}
+}
+
+

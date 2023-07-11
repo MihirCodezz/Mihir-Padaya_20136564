@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>EMI CALCULATOR</title>
+</head>
+<body>
+	<H2>EMI CALCULATOR</H2>
+	<form action="calculate.jsp"></form>
+	<label for="principal">PRINCIPAL AMOUNT:</label>
+	<input type="text" id="principal" name="principal" required><br><br>
+		
+	<label for="interest">RATE OF INTEREST:</label>
+	<input type="text" id="interest" name="interest" required><br><br>
+	
+	<label for="time">TIME IN MONTHS:</label>
+	<input type="text" id="time" name="time" required><br><br>
+		
+		<input type="submit" id="CALCULATE">
+</body>
+</html>

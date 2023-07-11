@@ -1,0 +1,47 @@
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import java.util.Scanner;
+
+public class MainApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter customer name: ");
+        String cname = scanner.nextLine();
+        
+        System.out.print("Enter place: ");
+        String place = scanner.nextLine();
+        
+        System.out.print("Enter PAN: ");
+        String pan = scanner.nextLine();
+        
+        // Create a Hibernate configuration object
+        Configuration configuration = new Configuration().configure();
+        
+        // Create a SessionFactory
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        
+        // Open a session from the SessionFactory
+        Session session = sessionFactory.openSession();
+        
+        // Begin a transaction
+        session.beginTransaction();
+        
+        // Create a new Customer object
+        Customer customer = new Customer(cname, place, pan);
+        
+        // Save the customer object to the database
+        session.save(customer);
+        
+        // Commit the transaction
+        session.getTransaction().commit();
+        
+        // Close the session and SessionFactory
+        session.close();
+        sessionFactory.close();
+        
+        System.out.println("Customer record inserted successfully!");
+    }
+}

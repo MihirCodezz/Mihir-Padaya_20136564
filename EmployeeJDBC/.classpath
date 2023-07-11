@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/mihir.padaya/Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mihir.padaya/Downloads/Jdbc jar-20230627T063304Z-001.zip"/>
+	<classpathentry kind="lib" path="C:/Users/mihir.padaya/OneDrive - IGT Solutions/Desktop/New folder/JAVA FULLSTACK/WbeDemo2/src/main/webapp/WEB-INF/lib/mysql-connector-java-5.0.4-bin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

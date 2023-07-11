@@ -1,0 +1,25 @@
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+    public static void main(String[] args) {
+        // Load the application context from the XML configuration file
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        // Retrieve the Employee bean from the context
+        Employee employee = (Employee) context.getBean("employee");
+
+        // Display the employee details
+        System.out.println("Employee ID: " + employee.getEmpID());
+        System.out.println("Employee Name: " + employee.getEmpName());
+
+        // Retrieve the programmingLanguages bean from the context
+        ArrayList<String> programmingLanguages = (ArrayList<String>) context.getBean("programmingLanguages");
+
+        // Display the programming languages
+        System.out.println("Programming Languages:");
+        for (String language : programmingLanguages) {
+            System.out.println(language);
+        }
+    }
+}
